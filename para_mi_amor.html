@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para mi amor ❤️</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center;
+      padding: 22px; font-family: "Segoe UI", system-ui, sans-serif;
+      color: #542638; overflow-x: hidden;
+      background: linear-gradient(135deg, #ffe3ec, #fff4f6 48%, #ffd4df);
+    }
+    .card {
+      width: min(100%, 520px); text-align: center; position: relative;
+      padding: 36px 26px; border: 1px solid #ffffffb8; border-radius: 28px;
+      background: #ffffffd9; box-shadow: 0 18px 55px #9c365022;
+      animation: appear .9s ease both;
+    }
+    .heart { font-size: 56px; animation: beat 1.2s infinite; display: inline-block; }
+    h1 { margin: 12px 0; font-size: clamp(2rem, 8vw, 3rem); color: #c02d62; }
+    .subtitle { font-size: 1.12rem; line-height: 1.7; margin: 16px 0 22px; }
+    .message {
+      padding: 18px; border-radius: 18px; background: #fff0f4;
+      font-size: 1.05rem; line-height: 1.8; margin: 20px 0;
+    }
+    button {
+      border: 0; border-radius: 999px; padding: 13px 22px; cursor: pointer;
+      font: inherit; font-weight: 700; color: white; background: #d83d70;
+      box-shadow: 0 7px 18px #d83d7038; transition: transform .2s;
+    }
+    button:active { transform: scale(.96); }
+    #extra { display: none; margin-top: 18px; line-height: 1.7; color: #b52e5d; }
+    .footer { margin-top: 24px; font-size: .9rem; color: #956273; }
+    .floating { position: fixed; bottom: -30px; opacity: .55; animation: floatUp 8s linear infinite; pointer-events: none; }
+    @keyframes beat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.13); } }
+    @keyframes appear { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes floatUp { to { transform: translateY(-110vh) rotate(25deg); opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="heart" aria-hidden="true">❤️</div>
+    <h1>Para ti, mi amor</h1>
+    <p class="subtitle">Quiero recordarte algo que a veces las palabras no alcanzan a explicar…</p>
+    <section class="message">
+      Te quiero muchísimo. ❤️<br>
+      Gracias por existir, por hacer mis días más bonitos y por tener ese lugar tan especial en mi corazón.
+      No necesito una fecha especial para decirte lo importante que eres para mí. Solo quiero que nunca dudes de todo el cariño que siento por ti.
+    </section>
+    <button type="button" onclick="mostrarMensaje()">Pulsa aquí, mi amor 💌</button>
+    <p id="extra">Si pudiera elegir otra vez, me encantaría volver a encontrarte. Te quiero hoy, mañana y en todos esos pequeños momentos que todavía nos esperan. 💗</p>
+    <div class="footer">Hecho con mucho cariño, solo para ti ✨</div>
+  </main>
+  <script>
+    function mostrarMensaje() {
+      const mensaje = document.getElementById('extra');
+      mensaje.style.display = 'block';
+      mensaje.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    const emojis = ['❤️', '💕', '💗', '✨'];
+    for (let i = 0; i < 14; i++) {
+      const item = document.createElement('span');
+      item.className = 'floating';
+      item.textContent = emojis[i % emojis.length];
+      item.style.left = (Math.random() * 100) + 'vw';
+      item.style.animationDelay = (Math.random() * 8) + 's';
+      item.style.animationDuration = (6 + Math.random() * 6) + 's';
+      item.style.fontSize = (16 + Math.random() * 18) + 'px';
+      document.body.appendChild(item);
+    }
+  </script>
+</body>
+</html>
